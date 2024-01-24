@@ -1,0 +1,93 @@
+/* App.css */
+
+/* General styles */
+.App {
+  background-image: url('./wallpaper.jpg');
+  background-size: cover;
+  background-position: center; 
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Styles for Checkbox label */
+.checkbox-label {
+  display: flex;
+  flex-direction: column; /* Adjust for small screens */
+  align-items: flex-start; /* Adjust for small screens */
+  font-size: 16px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none; 
+}
+
+/* Custom checkbox styles */
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #007bff; /* Border color */
+  border-radius: 3px;
+  position: relative;
+  margin-bottom: 5px; /* Adjust for small screens */
+}
+
+/* Checkmark icon styles */
+.custom-checkbox::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+  opacity: 0; /* Initially hidden */
+}
+
+/* Checked state */
+.checkbox-label input[type="checkbox"]:checked + .custom-checkbox::after {
+  opacity: 1; 
+}
+
+.checkbox-text {
+  user-select: none;
+  color: aliceblue;
+}
+
+/* Styles for button and section */
+#fsb {
+  width: 100%; /* Make the button full width on small screens */
+  height: 40px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 35px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px; 
+  margin-bottom: 20px;
+}
+
+#fsb:hover {
+  opacity: 0.8; 
+}
+
+.s-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  margin-top: 20px;
+}
+
+/* Media queries for responsiveness */
+@media only screen and (max-width: 600px) {
+  .checkbox-label,
+  #fsb {
+    width: 100%; /* Make the checkbox label and button full width on small screens */
+  }
+}
