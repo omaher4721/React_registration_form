@@ -10,7 +10,7 @@ const PersonalInfo = ({ onSubmit }) => {
     mobileNo: '',
     gender: '',
     class:'',
-    feild: '',
+    field: '',
     dob: '',
     hasDisable: '', 
   });
@@ -124,7 +124,7 @@ const PersonalInfo = ({ onSubmit }) => {
           </select>
         </div>
         <div className='Field'>
-          <select name="feild" value={formData.degree} onChange={handleChange} required>
+          <select name="field" value={formData.degree} onChange={handleChange} required>
             <option value="" disabled>Select Field</option>
             <option value="science">Science</option>
             <option value="commerce">Commerce</option>
