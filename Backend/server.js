@@ -2,15 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const cors = require('cors');
+require('dotenv').config();
+
 
 const app = express();
 const port = 3001;
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'youre Sql password',
-  database: 'sd_form',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
 });
 
 db.connect((err) => {
@@ -25,6 +27,7 @@ db.connect((err) => {
 app.use(cors());
 app.use(bodyParser.json());
 
+// Insert personal info and return student_id
 app.post('/api/personalInfo', (req, res) => {
   const personalInfo = req.body;
 
@@ -33,13 +36,21 @@ app.post('/api/personalInfo', (req, res) => {
       console.error('Error inserting PersonalInfo:', err);
       return res.status(500).json({ error: 'Internal Server Error' });
     }
-    console.log('PersonalInfo inserted successfully:', result.insertId);
-    return res.status(200).json({ message: 'OK' });
+
+    const studentId = result.insertId;
+    console.log('PersonalInfo inserted successfully. Student ID:', studentId);
+
+    // Return the studentId in the response
+    return res.status(200).json({ studentId });
   });
 });
 
+// Insert address info and associate with student_id
 app.post('/api/address', (req, res) => {
   const addressData = req.body;
+
+  // Ensure the student_id is present in the addressData
+  const studentId = addressData.student_id;
 
   db.query('INSERT INTO address SET ?', addressData, (err, result) => {
     if (err) {
@@ -47,13 +58,20 @@ app.post('/api/address', (req, res) => {
       res.status(500).send('Internal Server Error');
       return;
     }
-    console.log('Address information inserted successfully:', result.insertId);
-    res.status(200).send('OK');
+
+    const addressId = result.insertId;
+    console.log('Address information inserted successfully. Address ID:', addressId);
+
+    res.status(200).json({ addressId });
   });
 });
 
+// Insert educational info and associate with student_id
 app.post('/api/educationalInfo', (req, res) => {
   const educationalInfo = req.body;
+
+  // Ensure the student_id is present in the educationalInfo
+  const studentId = educationalInfo.student_id;
 
   db.query('INSERT INTO education SET ?', educationalInfo, (err, result) => {
     if (err) {
@@ -61,10 +79,38 @@ app.post('/api/educationalInfo', (req, res) => {
       res.status(500).send('Internal Server Error');
       return;
     }
-    console.log('EducationalInfo inserted successfully:', result.insertId);
-    res.status(200).send('OK');
+
+    const educationId = result.insertId;
+    console.log('EducationalInfo inserted successfully. Education ID:', educationId);
+
+    res.status(200).json({ educationId });
   });
 });
+
+
+
+// // Retrieve complete data for a student by student_id
+// app.get('/api/student/:student_id', (req, res) => {
+//   const studentId = req.params.student_id;
+
+//   const query = `
+//     SELECT *
+//     FROM personal_info
+//     JOIN address ON personal_info.student_id = address.student_id
+//     JOIN education ON personal_info.student_id = education.student_id
+//     WHERE personal_info.student_id = ?;
+//   `;
+
+//   db.query(query, [studentId], (err, result) => {
+//     if (err) {
+//       console.error('Error retrieving student data:', err);
+//       res.status(500).send('Internal Server Error');
+//       return;
+//     }
+
+//     res.status(200).json({ studentData: result });
+//   });
+// });
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

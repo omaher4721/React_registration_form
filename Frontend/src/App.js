@@ -10,34 +10,61 @@ const App = () => {
   const [addressInfo, setAddressInfo] = useState(null);
   const [educationalInfo, setEducationalInfo] = useState(null);
 
+  // Capture the studentId when personalInfo is submitted
   const handlePersonalInfoSubmit = (data) => {
-    axios.post('http://localhost:3001/api/personalInfo', data)
+    axios.post(`${process.env.REACT_APP_API_URL}/personalInfo`, data)
       .then(response => {
-        console.log('PersonalInfo submitted successfully:', response.data);
+        const studentId = response.data.studentId;
+        setPersonalInfo({ ...data, student_id: studentId });
+        console.log('PersonalInfo submitted successfully. Student ID:', studentId);
       })
       .catch(error => {
         console.error('Error submitting PersonalInfo:', error);
       });
   };
 
+  // Pass the student_id when submitting addressInfo
   const handleAddressSubmit = (data) => {
-    axios.post('http://localhost:3001/api/address', data)
-      .then(response => {
-        console.log('Address information submitted successfully:', response.data);
-      })
-      .catch(error => {
-        console.error('Error submitting Address information:', error);
-      });
+    // Ensure student_id is present in personalInfo
+    const studentId = personalInfo ? personalInfo.student_id : null;
+
+    if (studentId) {
+      // Include student_id in the address data
+      const addressData = { ...data, student_id: studentId };
+
+      axios.post(`${process.env.REACT_APP_API_URL}/address`, addressData)
+        .then(response => {
+          setAddressInfo(addressData);
+          console.log('Address information submitted successfully:', response.data);
+        })
+        .catch(error => {
+          console.error('Error submitting Address information:', error);
+        });
+    } else {
+      alert('Make sure personalInfo is submitted first.');
+    }
   };
 
+  // Pass the student_id when submitting educationalInfo
   const handleEducationalInfoSubmit = (data) => {
-    axios.post('http://localhost:3001/api/educationalInfo', data)
-      .then(response => {
-        console.log('EducationalInfo submitted successfully:', response.data);
-      })
-      .catch(error => {
-        console.error('Error submitting EducationalInfo:', error);
-      });
+    // Ensure student_id is present in personalInfo
+    const studentId = personalInfo ? personalInfo.student_id : null;
+
+    if (studentId) {
+      // Include student_id in the educationalInfo data
+      const educationalData = { ...data, student_id: studentId };
+
+      axios.post(`${process.env.REACT_APP_API_URL}/educationalInfo`,educationalData)
+        .then(response => {
+          setEducationalInfo(educationalData);
+          console.log('EducationalInfo submitted successfully:', response.data);
+        })
+        .catch(error => {
+          console.error('Error submitting EducationalInfo:', error);
+        });
+    } else {
+      console.error('Make sure personalInfo is submitted first..');
+    }
   };
 
   return (
