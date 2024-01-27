@@ -23,13 +23,13 @@ const App = () => {
       });
   };
 
-  // Pass the student_id when submitting addressInfo
+  // Passing the student_id 
   const handleAddressSubmit = (data) => {
     // Ensure student_id is present in personalInfo
     const studentId = personalInfo ? personalInfo.student_id : null;
 
     if (studentId) {
-      // Include student_id in the address data
+      // Include student id
       const addressData = { ...data, student_id: studentId };
 
       axios.post(`${process.env.REACT_APP_API_URL}/address`, addressData)
@@ -45,7 +45,7 @@ const App = () => {
     }
   };
 
-  // Pass the student_id when submitting educationalInfo
+  // Pass student id
   const handleEducationalInfoSubmit = (data) => {
     // Ensure student_id is present in personalInfo
     const studentId = personalInfo ? personalInfo.student_id : null;
