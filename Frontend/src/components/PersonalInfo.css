@@ -13,6 +13,7 @@
   border: 1px solid  rgba(255,255,255,0.18);
   box-shadow: 0 8px 32px 0 rgba(0, 0,0,0.37);
   font-family: inherit;
+  font-size: medium;
 
 }
 #firstName{
@@ -123,4 +124,17 @@ button[type="submit"]:hover {
 }
 #LastName{
   border-radius: 34px;
+}
+.DOB{
+  font-family: inherit;
+  font-weight: bold;
+}
+.class{
+  font-family: inherit;
+  font-weight: bold;
+  border-radius: 0%;
+}
+.Field{
+  font-family: inherit;
+  font-weight: bold;
 }

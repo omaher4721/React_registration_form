@@ -116,22 +116,22 @@ const PersonalInfo = ({ onSubmit }) => {
           </label>
         </div>
 
-        <div className="class">
+        <div className="class"><label>Select Class</label>
+          
           <select
             name="class"
             value={formData.class}
             onChange={handleChange}
             required
           >
-            <option value="" disabled>
-              Select Class
-            </option>
             <option value="11th">11th</option>
             <option value="12th">12th</option>
             {/* Add more options as needed */}
           </select>
         </div>
+
         <div className="Field">
+        <label>Select Stream</label>
           <select
             name="field"
             value={formData.degree}
@@ -144,10 +144,12 @@ const PersonalInfo = ({ onSubmit }) => {
             <option value="science">Science</option>
             <option value="commerce">Commerce</option>
             <option value="art">Art</option>
-            {/* Add more options as needed */}
+            
           </select>
         </div>
+        
         <div className="DOB">
+          Date of Birth
           <input
             type="date"
             name="dob"
