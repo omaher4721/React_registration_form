@@ -63,7 +63,7 @@ const App = () => {
           console.error('Error submitting EducationalInfo:', error);
         });
     } else {
-      console.error('Make sure personalInfo is submitted first..');
+      alert('Make sure personalInfo is submitted first..');
     }
   };
 
