@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PersonalInfo from './components/PersonalInfo';
 import Address from './components/Address';
 import EducationalInfo from './components/EducationalInfo';
+import Thankyou from './components/Thankyou';
 import './App.css';
 import axios from 'axios';
 
@@ -9,8 +10,8 @@ const App = () => {
   const [personalInfo, setPersonalInfo] = useState(null);
   const [addressInfo, setAddressInfo] = useState(null);
   const [educationalInfo, setEducationalInfo] = useState(null);
+  const [allFieldsSubmitted, setAllFieldsSubmitted] = useState(false);
 
-  // Capture the studentId when personalInfo is submitted
   const handlePersonalInfoSubmit = (data) => {
     axios.post(`${process.env.REACT_APP_API_URL}/personalInfo`, data)
       .then(response => {
@@ -23,13 +24,9 @@ const App = () => {
       });
   };
 
-  // Passing the student_id 
   const handleAddressSubmit = (data) => {
-    // Ensure student_id is present in personalInfo
-    const studentId = personalInfo ? personalInfo.student_id : null;
-
-    if (studentId) {
-      // Include student id
+    if (personalInfo) {
+      const studentId = personalInfo.student_id;
       const addressData = { ...data, student_id: studentId };
 
       axios.post(`${process.env.REACT_APP_API_URL}/address`, addressData)
@@ -41,36 +38,40 @@ const App = () => {
           console.error('Error submitting Address information:', error);
         });
     } else {
-      alert('Make sure personalInfo is submitted first.');
+      alert('Please fill in and submit the Personal Info section first.');
     }
   };
 
-  // Pass student id
   const handleEducationalInfoSubmit = (data) => {
-    const studentId = personalInfo ? personalInfo.student_id : null;
-
-    if (studentId) {
-      //  student_id in the educationalInfo
+    if (personalInfo) {
+      const studentId = personalInfo.student_id;
       const educationalData = { ...data, student_id: studentId };
 
-      axios.post(`${process.env.REACT_APP_API_URL}/educationalInfo`,educationalData)
+      axios.post(`${process.env.REACT_APP_API_URL}/educationalInfo`, educationalData)
         .then(response => {
           setEducationalInfo(educationalData);
           console.log('EducationalInfo submitted successfully:', response.data);
+          setAllFieldsSubmitted(true);
         })
         .catch(error => {
           console.error('Error submitting EducationalInfo:', error);
         });
     } else {
-      alert('Make sure personalInfo is submitted first..');
+      alert('Please fill in and submit the Personal Info section first.');
     }
   };
 
   return (
     <div className="App">
-      <PersonalInfo onSubmit={handlePersonalInfoSubmit} />
-      <Address onSubmit={handleAddressSubmit} />
-      <EducationalInfo onSubmit={handleEducationalInfoSubmit} />
+      {!allFieldsSubmitted && (
+        <>
+          <PersonalInfo onSubmit={handlePersonalInfoSubmit} />
+          <Address onSubmit={handleAddressSubmit} />
+          <EducationalInfo onSubmit={handleEducationalInfoSubmit} />
+        </>
+      )}
+
+      {allFieldsSubmitted && <Thankyou />}
     </div>
   );
 };

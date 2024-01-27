@@ -1,14 +1,19 @@
 /* App.css */
 
 /* General styles */
+
+body {
+  height: 100%;
+  margin: 0; /* Remove default margin */
+}
+
 .App {
   background-image: url('./wallpaper.jpg');
   background-size: cover;
   background-position: center; 
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom:11%
 }
-
 /* Styles for Checkbox label */
 .checkbox-label {
   display: flex;
