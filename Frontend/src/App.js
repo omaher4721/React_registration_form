@@ -47,11 +47,10 @@ const App = () => {
 
   // Pass student id
   const handleEducationalInfoSubmit = (data) => {
-    // Ensure student_id is present in personalInfo
     const studentId = personalInfo ? personalInfo.student_id : null;
 
     if (studentId) {
-      // Include student_id in the educationalInfo data
+      //  student_id in the educationalInfo
       const educationalData = { ...data, student_id: studentId };
 
       axios.post(`${process.env.REACT_APP_API_URL}/educationalInfo`,educationalData)
