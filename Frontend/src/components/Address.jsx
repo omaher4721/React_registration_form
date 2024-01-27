@@ -30,7 +30,7 @@ const Address = ({ onSubmit }) => {
 
   return (
     <div className='Address'>
-      <h3 style={{ color: '' }}>Address Information</h3>
+      <h2>Address Information</h2>
       <form onSubmit={handleFormSubmit}>
         <input id ='presentAddress'
           type="text"

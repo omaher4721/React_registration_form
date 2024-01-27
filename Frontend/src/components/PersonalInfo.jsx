@@ -32,7 +32,7 @@ const PersonalInfo = ({ onSubmit }) => {
 
   return (
     <div className="PersonalInfo">
-      <h3>Personal Information</h3>
+      <h2>Personal Information</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="NameFields">
           <input

@@ -138,3 +138,8 @@ button[type="submit"]:hover {
   font-family: inherit;
   font-weight: bold;
 }
+h2{
+  text-align: center;
+  font-family:inherit;
+  margin-bottom: 20px;
+}
