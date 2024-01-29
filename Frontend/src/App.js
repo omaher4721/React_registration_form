@@ -15,14 +15,20 @@ const App = () => {
   const handlePersonalInfoSubmit = (data) => {
     axios.post(`${process.env.REACT_APP_API_URL}/personalInfo`, data)
       .then(response => {
-        const studentId = response.data.studentId;
-        setPersonalInfo({ ...data, student_id: studentId });
-        console.log('PersonalInfo submitted successfully. Student ID:', studentId);
+        const { studentId, alreadySubmitted } = response.data;
+  
+        if (alreadySubmitted) {
+          alert('You have already submitted the form with this email.');
+        } else {
+          setPersonalInfo({ ...data, student_id: studentId });
+          console.log('PersonalInfo submitted successfully. Student ID:', studentId);
+        }
       })
       .catch(error => {
         console.error('Error submitting PersonalInfo:', error);
       });
   };
+  
 
   const handleAddressSubmit = (data) => {
     if (personalInfo) {
