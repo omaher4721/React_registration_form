@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/React_studentRegistration_form/static/css/main.bff14f8e.css",
-    "main.js": "/React_studentRegistration_form/static/js/main.38a71819.js",
+    "main.css": "/React_studentRegistration_form/static/css/main.38e791cb.css",
+    "main.js": "/React_studentRegistration_form/static/js/main.ca4e58fa.js",
     "static/js/787.b4014910.chunk.js": "/React_studentRegistration_form/static/js/787.b4014910.chunk.js",
     "static/media/wallpaper.jpg": "/React_studentRegistration_form/static/media/wallpaper.0d4a233e3ea60bffd276.jpg",
     "index.html": "/React_studentRegistration_form/index.html",
-    "main.bff14f8e.css.map": "/React_studentRegistration_form/static/css/main.bff14f8e.css.map",
-    "main.38a71819.js.map": "/React_studentRegistration_form/static/js/main.38a71819.js.map",
+    "main.38e791cb.css.map": "/React_studentRegistration_form/static/css/main.38e791cb.css.map",
+    "main.ca4e58fa.js.map": "/React_studentRegistration_form/static/js/main.ca4e58fa.js.map",
     "787.b4014910.chunk.js.map": "/React_studentRegistration_form/static/js/787.b4014910.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bff14f8e.css",
-    "static/js/main.38a71819.js"
+    "static/css/main.38e791cb.css",
+    "static/js/main.ca4e58fa.js"
   ]
 }
