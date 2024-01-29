@@ -6,7 +6,7 @@ require('dotenv').config();
 
 
 const app = express();
-const port = 3001;
+const port = 3000;
 
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -86,31 +86,6 @@ app.post('/api/educationalInfo', (req, res) => {
     res.status(200).json({ educationId });
   });
 });
-
-
-
-// // Retrieve complete data for a student by student_id
-// app.get('/api/student/:student_id', (req, res) => {
-//   const studentId = req.params.student_id;
-
-//   const query = `
-//     SELECT *
-//     FROM personal_info
-//     JOIN address ON personal_info.student_id = address.student_id
-//     JOIN education ON personal_info.student_id = education.student_id
-//     WHERE personal_info.student_id = ?;
-//   `;
-
-//   db.query(query, [studentId], (err, result) => {
-//     if (err) {
-//       console.error('Error retrieving student data:', err);
-//       res.status(500).send('Internal Server Error');
-//       return;
-//     }
-
-//     res.status(200).json({ studentData: result });
-//   });
-// });
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
