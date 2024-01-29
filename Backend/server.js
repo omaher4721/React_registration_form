@@ -6,7 +6,7 @@ require('dotenv').config();
 
 
 const app = express();
-const port = process.env.PORT ||3001;
+const port = 3001;
 
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -86,6 +86,8 @@ app.post('/api/educationalInfo', (req, res) => {
     res.status(200).json({ educationId });
   });
 });
+
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
