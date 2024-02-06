@@ -1,0 +1,94 @@
+
+/* Educational Info Styles */
+.EI {
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  color: #000;;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.1));
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid  rgba(255,255,255,0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0,0,0.37);
+
+
+}
+
+.EI h2 {
+  text-align: center;
+  font-family:inherit;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="text"],
+select,
+button,
+input[type="checkbox"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+#ssc-S_name{
+  border-radius: 34px;
+}
+
+#ssc-marks{
+  border-radius: 34px;
+}
+.Scholarship {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+
+#radio {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; /* Align items to the end of the flex container (shift to the right) */
+}
+
+.labelText{
+  margin-left: 20px;
+}
+
+
+button {
+  background-color: #6fa6e5;
+  color: black;
+  border-radius: 34px;
+  cursor: pointer;
+}
+
+
+button:hover {
+  background-color: #d78b19;
+}
+
+.Scholarship{
+  padding-bottom: 10px;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="tel"]:hover,
+select:hover,
+input[type="date"]:hover,
+input[type="radio"]:hover {
+border-color: #d78b19;
+}
+
