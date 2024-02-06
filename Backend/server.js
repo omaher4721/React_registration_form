@@ -23,8 +23,12 @@ db.connect((err) => {
   console.log('Connected to MySQL');
 });
 
+const corsOptions = {
+  origin: process.env.REACT_APP_S3_URL,
+};
+
 // API Creation
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // Insert personal info and return student_id
