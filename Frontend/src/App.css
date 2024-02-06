@@ -6,7 +6,6 @@ body {
 }
 
 .App {
-  background-image: url('./wallpaper.jpg');
   background-size: cover;
   background-position: center; 
   padding-top: 20px;
