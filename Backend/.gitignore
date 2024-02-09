@@ -5,7 +5,7 @@ node_modules
 Backend/node_modules/
 
 # Ignore node_modules in the Frontend directory
-Backend/node_modules/
+node_modules
 
 .env
 
