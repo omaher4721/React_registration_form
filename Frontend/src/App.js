@@ -23,7 +23,7 @@ const App = () => {
         console.error('Error submitting PersonalInfo:', error);
       });
   };
-
+  
   const handleAddressSubmit = (data) => {
     if (personalInfo) {
       const studentId = personalInfo.student_id;
